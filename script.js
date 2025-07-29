@@ -162,5 +162,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 1000);
 });
-
-alert("SI")
