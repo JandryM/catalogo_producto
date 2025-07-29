@@ -162,3 +162,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 1000);
 });
+// Export para pruebas
+function calcularTotalCarrito(items) {
+  return items.reduce((total, item) => total + item.price, 0);
+}
+
+module.exports = { calcularTotalCarrito };
