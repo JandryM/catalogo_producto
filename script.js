@@ -91,7 +91,7 @@ function initPaymentBox(total) {
   // Verificar si la librería se ha cargado correctamente
   if (window.PPaymentButtonBox) {
     ppButton = new window.PPaymentButtonBox({
-      token: 'rSa8scau-E18gK-vzFNOya-re7pxwSchxWDbRlB1-JYb00nXpz6YRekqm0GyjKCZ2WejLeRAtO8gtog0NthwLWey9xpEc7iVix8fRQWv-CkaXs3daOelnJseC2EdGffbFSc8DGHn-q8XBATatEwoQ-DW9veqftXeYq1FfUG9ci7pYlcvY1rzJH5DEztnna5q2TRJ8MsiZtPzbyy-wFxnBkdPlYIeqdEdLidTx7TK2eFuUVvqJzZKo9TEGb7t1eyL9K6UTqzKVSdbjDvhZFSyEto9dW06VmDD-sJXssllDxt8EyX8YoZ7d3SLj69mMsE_yQRnG2T4VYWXvOOFGhIgaUgKunk',
+      token: '4vSEWna2Gz4gQL8Ps5bP8Z9ZE4cUR6V5vY59Jfow1jMYKkCxxnzf-b1KcEL-XkeWGvczQQvV1Onf24trUpoBnFhnpiAugonZoTlLQxg4ohJWlYC4lbAEctoV8RfpsmrB44wkcrj9NJWNX2NLlRVp__Dnk8pLQkdWFcBM6RSMkfEOnKM87Jjs1yO_69YLJKHuphJv9KRk0LvDQbo6ILwvcSgtpT3js2Iy1lEOjSNV3gWU8x-s_li7FBQoX7G-GhXGwoo2eTTJrAO6e0sHZ6TMW93KmRDZrQ9__K2hBBlDo0JIqrXeWCXucc7ZN4GmTiGUFcgozVbAJkDkUPEowkxX_JniwZE',
       clientTransactionId: transactionId,
       amount: amountInCents,
       amountWithoutTax: amountInCents,
