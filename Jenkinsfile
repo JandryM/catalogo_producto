@@ -1,33 +1,56 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Instalar dependencias') {
-      steps {
-        sh 'npm install'
-      }
+    tools {
+        nodejs "Node24"            // Node.js instalado desde Jenkins (global tool config)
+        dockerTool 'Dockertool'    // Si usas Docker también
     }
 
-    stage('Ejecutar pruebas') {
-      steps {
-        sh 'npm test'
-      }
+    stages {
+        stage('Instalar dependencias') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Ejecutar pruebas') {
+            steps {
+                // Asegura que jest pueda ejecutarse aunque esté en node_modules
+                sh 'npx jest'
+            }
+        }
+
+        stage('Construcción de imagen Docker (opcional)') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            steps {
+                // Esto es opcional si vas a dockerizar la pasarela
+                sh 'docker build -t pasarela-static:latest .'
+            }
+        }
+
+        stage('Despliegue (opcional)') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            steps {
+                // Simula despliegue local
+                sh '''
+                    docker stop pasarela-static || true
+                    docker rm pasarela-static || true
+                    docker run -d --name pasarela-static -p 8080:80 pasarela-static:latest
+                '''
+            }
+        }
     }
 
-    stage('Desplegar') {
-      steps {
-        echo 'Aquí se haría el despliegue (por ejemplo, copiar archivos al servidor o subir a Netlify)'
-        // sh './deploy.sh' (si tienes uno)
-      }
+    post {
+        failure {
+            echo '❌ Las pruebas fallaron o algo salió mal.'
+        }
+        success {
+            echo '✅ Pipeline ejecutado correctamente.'
+        }
     }
-  }
-
-  post {
-    success {
-      echo '✅ Todo correcto.'
-    }
-    failure {
-      echo '❌ Fallaron las pruebas.'
-    }
-  }
 }
