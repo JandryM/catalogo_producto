@@ -2,8 +2,9 @@ const { calcularTotalCarrito } = require('../utils');
 
 test('calcula correctamente el total del carrito', () => {
   const carrito = [
-    { name: 'Producto 1', price: 10 },
-    { name: 'Producto 2', price: 20 }
+    { name: 'A', price: 10 },
+    { name: 'B', price: 20 },
+    { name: 'C', price: 30 }
   ];
-  expect(calcularTotalCarrito(carrito)).toBe(30);
+  expect(calcularTotalCarrito(carrito)).toBe(60);
 });
