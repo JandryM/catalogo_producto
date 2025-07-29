@@ -164,3 +164,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log("Ta bien");
+alert("Hola, bienvenido a la tienda de productos");
