@@ -39,7 +39,7 @@ pipeline {
                 sh '''
                     docker stop pasarela-static || true
                     docker rm pasarela-static || true
-                    docker run -d --name pasarela-static -p 8080:80 pasarela-static:latest
+                    docker run -d --name pasarela-static -p 8081:80 pasarela-static:latest
                 '''
             }
         }
